@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Make a LEGO Block</title>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4caf50;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        #viewer {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            margin: 20px auto;
+            background-color: #ddd;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            color: white;
+            background: #4caf50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+        }
+        .button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🧱 Let's make our own building blocks</h1>
+        <p>Today you will use TinkerCad to build a 3D block model that you can print on a 3D printer.  
+          Then you can snap it together with other LEGO pieces you have in your classroom or home.</p>
+
+        <!-- Babylon.js STL Viewer -->
+        <canvas id="viewer"></canvas>
+      
+        <br>
+        <a href="https://www.tinkercad.com/joinclass/LA3X1A33GASU" target="_blank" rel="noopener noreferrer" style="font-size: 24px; font-weight: bold;">
+        Join our class
+        </a><br><br>
+        <p>
+        Click the link above to join our tinkerCad classroom.  You don't need to sign-up.  Just use a nickname. 
+        Your nickname will be your first name as it appears on your badge.<br><br>  
+        If you're not at a GTAC professional learning event, you can choose a number from one to twenty.  
+        Log in using that number as a word. <i>eg. one.</i>
+        </p>
+
+
+        <p>When you have joined the class and you're ready, get started.</p>
+        
+        <div class="button-container">
+            <a href="activity.html" class="button">Let's go</a>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("viewer");
+        const engine = new BABYLON.Engine(canvas, true);
+        const scene = new BABYLON.Scene(engine);
+        const camera = new BABYLON.ArcRotateCamera("camera", Math.PI / 2, Math.PI / 3, 5, BABYLON.Vector3.Zero(), scene);
+        camera.attachControl(canvas, true);
+        camera.target = new BABYLON.Vector3(-4, 1, 0); // Make sure it's looking at the center
+
+
+        const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0), scene);
+
+        BABYLON.SceneLoader.ImportMesh("", "", "https://cdn.glitch.global/c3ac5e31-59cb-4d14-b511-32db9d8dd7af/brick.stl", scene, function (meshes) {
+            meshes.forEach(mesh => {
+                mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1); // Adjust scale
+                
+            });
+          
+        });
+
+        engine.runRenderLoop(() => {
+            scene.render();
+        });
+        
+        window.addEventListener("resize", () => {
+            engine.resize();
+        });
+    </script>
+
+</body>
+</html>
