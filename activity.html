@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GTAC TinkerCAD Tutorial</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .progress-bar {
+        width: 100%;
+        background: #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+      .progress {
+        height: 20px;
+        width: 0%;
+        background: #4caf50;
+        transition: width 0.3s ease;
+      }
+      .sidebar {
+        width: 200px;
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        overflow-y: auto;
+      }
+      .badge {
+        font-size: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        background: #fff;
+        color: #333;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-weight: bold;
+      }
+      .badge span {
+        font-size: 1rem;
+      }
+      .card {
+        display: none;
+      }
+      .card.active {
+        display: block;
+      }
+      .emoji {
+        position: absolute;
+        font-size: 2rem;
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+      .nav-buttons {
+        margin-top: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background: #4caf50;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #45a049;
+      }
+      button[disabled] {
+        background: #ddd;
+        cursor: not-allowed;
+      }
+      canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar" id="sidebar">
+      <h2>Achievements</h2>
+      <div id="badge-container"></div>
+      <div id="badge-container2"></div>
+      <div id="badge-container3"></div>
+      <div id="badge-container4"></div>
+      <div id="badge-container5"></div>
+      <div id="badge-container6"></div>
+    </div>
+
+    <div class="container">
+      
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+      <p id="progress-text">1/5</p>
+
+      <!-- Card 1 -->
+      <div class="card" id="card-1">
+        <h2>How do I move in the Tinkercad world?</h2>
+        
+        <video width="600" height="300" controls>
+            <source src="https://gtacaus.github.io/tinker/Maze1%20Mm%20V1-1.mp4" type="video/mp4">
+            <source src="https://gtacaus.github.io/tinker/Maze1%20Mm%20V1-1.mp4" type="video/quicktime">
+            Your browser does not support the video tag.
+        </video>
+        <p>
+          Watch the video above to learn what to do in this first challenge.
+        </p>
+        <!-- Use data-src instead of src -->
+        <iframe
+          width="725"
+          height="453"
+          data-src="https://www.tinkercad.com/embed/aafnfMeGLjK?editbtn=1"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
+        <p>
+          You'll need to click on the text that says <i>GTAC maze level 1</i> in the 3D viewer above. That will open up a new tab with TinkerCAD and you'll need to select "Tinker this" or "Copy and Tinker" to start the challenge.</p>
+          
+        <p>
+          Once you're in, click on the purple cone shape and <b>use your up, down, left, right
+          buttons</b> to move it through the first three turns of the maze.
+        </p>
+        <br /><br />
+        <button onclick="markComplete(1)">I did it!</button>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card" id="card-2">
+        <h2>How do I look around in the Tinkercad world?</h2>
+        <video width="600" height="300" controls>
+            <source src="https://gtacaus.github.io/tinker/Maze2%20Mm%20V1-1.mp4" type="video/mp4">
+            <source src="https://gtacaus.github.io/tinker/Maze2%20Mm%20V1-1.mp4" type="video/quicktime">
+            Your browser does not support the video tag.
+        </video>
+        <p>
+          Watch the video above to learn what to do in this challenge.
+        </p>
+        <p>
+          You'll need to click on the text that says <i>GTAC maze level 2</i> in the 3D viewer below. That will open up TinkerCAD. Again, you'll need to select "Tinker this" or "Copy and Tinker" to start the challenge.
+        </p>           
+        <p>
+          Once you're in, <b>ONLY use your up button</b> to move the cone through the next three turns of the maze. You'll need to use your mouse to look around. Right click and use your mouse. This allows you to rotate camera around the object. Middle click and use your mouse. This allows you to shift the object around the world. Finally, use your scrollwheel to zoom.
+        </p>
+        <!-- Use data-src instead of src -->
+        <iframe 
+          width="725" 
+          height="453" 
+          data-src="https://www.tinkercad.com/embed/4xjH74WKzWL"
+          frameborder="0"
+          marginwidth="0"
+          marginheight="0"
+          scrolling="no">
+        </iframe>
+        <br /><br />
+        <button onclick="markComplete(2); finishMaze();">I did it!</button>
+      </div>
+      
+      <!-- Card 3 -->
+      <div class="card" id="card-3">
+        <h2>What's in a brick?</h2>
+        <!-- Use data-src instead of src for all three iframes -->
+        <p>Our goal for today is to make a 2x2 lego brick.
+          These bricks are made up of a number of shapes. These are rectangular prisms and cylinders. <br>
+          
+          A lego brick is just a collection of 3D shapes with holes in them.</p>
+        
+        <iframe 
+          width="725" 
+          height="453" 
+          data-src="https://www.tinkercad.com/embed/ihJR8AnhSIQ"
+          frameborder="0"
+          marginwidth="0"
+          marginheight="0"
+          scrolling="no">
+        </iframe>
+        
+        <p><b>This lego brick is made up of:</b> <br>
+          a box <br>
+          a tube <br>
+          four cylinder-shaped studs</p>
+        <iframe 
+          width="725" 
+          height="453" 
+          data-src="https://www.tinkercad.com/embed/bTATxWxmdHG"
+          frameborder="0"
+          marginwidth="0"
+          marginheight="0"
+          scrolling="no">
+        </iframe>
+        <h3>What are we going to do?</h3>
+        <p>This training module consists of four chapters.  As you complete each you will get closer to completing a full lego block.  You don't need to do anything just yet, just watch the intro video, and we can get started after it's done.</p><br>
+        <video width="600" height="300" controls>
+            <source src="https://gtacaus.github.io/tinker/intro.mp4" type="video/mp4">
+            <source src="https://gtacaus.github.io/tinker/intro.mp4" type="video/quicktime">
+            Your browser does not support the video tag.
+        </video>
+        <p>Watch the video above, and you will find out what you'll be learning across the four chapters.</p>
+        
+        <br />
+        <button onclick="markComplete(3); finishIntro();">Ok, I'm ready.  Let's do it!</button>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card" id="card-4">
+        <h2>Chapter 1: Making rectangular prisms and cylinders</h2>
+        <p>
+          Firstly, we need to make the shapes that are part of a brick.  We need a box, big cylinder, and four studs.  <br><br>This chapter shows you how to make these shapes and size them to exact measurements.        </p>
+        <video width="600" height="300" controls>
+            <source src="https://gtacaus.github.io/tinker/Chapter1%20Mm%20V3-1.mp4" type="video/mp4">
+            <source src="https://gtacaus.github.io/tinker/Chapter1%20Mm%20V3-1.mp4" type="video/quicktime">
+            Your browser does not support the video tag.
+        </video>
+        <p>
+          Watch the video above to learn how.<br><br>
+          Then click <i>Make a new design</i> to start making.
+        </p>
+        <a href="https://www.tinkercad.com/things/bbpC4iZlVst-create-new-design" target="_blank" rel="noopener noreferrer" style="font-size: 24px; font-weight: bold;">
+        Make a new design
+        </a><br><br>
+        <p><b>Quick tip: How to resize a shape</b>
+        </p>
+        <img width="300" height="300"
+          src="https://gtacaus.github.io/tinker/chap1.gif"
+          alt="Making shapes graphic" 
+        />
+        <p>
+          Click on the white boxes on the bottom of the shape to change length and width.  Click the top white box to change the height.
+        </p>
+        <br /><br />
+        <button onclick="markComplete(4); finishShape();">I did it!</button>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card" id="card-5">
+        <h2>Chapter 2: Putting holes in shapes</h2>
+        <p>
+          Next, we need to make holes in our box and cylinder. <br><br>This chapter shows you how to make hole shapes, size them to exact measurements and combine them with our box and cylinder to make an open box and a tube.        </p>
+        <video width="600" height="300" controls>
+            <source src="https://gtacaus.github.io/tinker/Chapter2%20Mm%20V2-2.mp4" type="video/mp4">
+            <source src="https://gtacaus.github.io/tinker/Chapter2%20Mm%20V2-2.mp4" type="video/quicktime">
+            Your browser does not support the video tag.
+        </video>
+        <p>
+          Watch the video above to learn what to do in this chapter.<br><br>  Then, return to your design and make the changes shown in the video.
+        </p>
+        <br><br>
+        <p><b>Quick tip: How to align shapes</b>
+        </p>
+        <img width="300" height="300"
+          src="https://gtacaus.github.io/tinker/chap2.gif"
+          alt="Making shapes graphic" 
+        />
+        <p>
+          Click on <i>align</i> in the toolbar at the top of your window.  Click middle circles for length and width to put the hole in the centre of the box.  Then click the top circle to put the hole at the top of the box or cylinder.  Click <i>group</i> to combine them.
+        </p>
+        <a href="https://www.tinkercad.com/things/d1mpSBGjcvf-brick-shapes/edit?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2F3d" target="_blank" rel="noopener noreferrer" style="font-size: 18px; font-weight: bold;">
+        Didn't finish the last part? - we have you covered.  Continue from here.
+        </a>
+        <br /><br />
+        <button onclick="markComplete(5); finishHole();">I did it!</button>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card" id="card-6">
+        <h2>Chapter 3: Copying and pasting objects</h2>
+        <p>
+          Next, we need to make four copies of our stud, and put them on top of our brick. <br><br>This chapter shows us how to copy, paste and move objects up and down in the tinkercad world.</p>
+        <video width="600" height="300" controls>
+            <source src="https://gtacaus.github.io/tinker/Chapter3%20Mm%20V3-1.mp4" type="video/mp4">
+            <source src="https://gtacaus.github.io/tinker/Chapter3%20Mm%20V3-1.mp4" type="video/quicktime">
+            Your browser does not support the video tag.
+        </video>
+        <p>
+          Watch the video above to learn what to do in this challenge.  Then, return to your design and make the changes shown in the video.
+        </p>
+        <br><br>
+        <p><b>Quick demo: Copying and Pasting shapes</b>
+        </p>
+        <img width="300" height="300"
+          src="https://gtacaus.github.io/tinker/chap3.gif"
+          alt="Copy paste graphic" 
+        />
+        <p>
+          You can copy shapes with <i>control C</i> followed by <i>control V</i>.<br><br>  To make shapes move up "in the air" hold <i>control</i> and press <i>up</i> or <i>down</i> to move objects down.
+        </p>
+        <a href="https://www.tinkercad.com/things/31zYCfD9tgw-brick-shapes-with-holes/edit?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2F3d" target="_blank" rel="noopener noreferrer" style="font-size: 18px; font-weight: bold;">
+        Didn't finish the last part? - we have you covered.  Continue from here.
+        </a>
+        <br /><br />
+        <button onclick="markComplete(6); finishCopyPasta();">I did it!</button>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="card" id="card-7">
+        <h2>Chapter 4: Measuring objects using a square ruler</h2>
+        <p>
+          Next, we need to make four copies of our stud, and put them on top of our brick. <br><br>This chapter shows us how to measure the distance between our studs.  If they aren't placed quite right, other bricks might not join nicely with your creation.</p>
+        <video width="600" height="300" controls>
+            <source src="https://gtacaus.github.io/tinker/Chapter4%20Mm%20V2-2.mp4" type="video/mp4">
+            <source src="https://gtacaus.github.io/tinker/Chapter4%20Mm%20V2-2.mp4" type="video/quicktime">
+            Your browser does not support the video tag.
+        </video>
+        <p>
+          Watch the video above to learn what to do in this challenge.  Then, return to your design and make the changes shown in the video.
+        </p>
+        <br><br>
+        <p><b>Quick demo: Using the ruler</b>
+        </p>
+        <img width="300" height="300"
+          src="https://gtacaus.github.io/tinker/chap4.gif"
+          alt="Using the square ruler" 
+        />
+        <br>
+         <p>
+          There's a right angle ruler button you can select in tinkerCad that will allow you to make measurements.  Drop it into your workspace and position it using the small black circle at its corner EXACTLY where you want it.
+        </p>
+        <a href="https://www.tinkercad.com/things/lFzG1mwi7VN-complete-brick/edit?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2F3d" target="_blank" rel="noopener noreferrer" style="font-size: 18px; font-weight: bold;">
+        Didn't finish the last part? - we have you covered.  Continue from here.
+        </a>
+        <br /><br />
+        <button onclick="markComplete(7); finishRuler();">I did it!</button>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="card" id="card-8">
+        <h2>Complete training</h2>
+        <p>Complete your training challenge.</p>
+        <br /><br />
+        <button onclick="markComplete(8); finishAll();">Complete training</button>
+      </div>
+
+      <div class="emoji" id="emoji">🎉</div>
+
+      <div class="nav-buttons">
+        <button id="prev" onclick="prevCard()" style="display: none">
+          Previous
+        </button>
+        <button id="next" onclick="nextCard()" disabled>Next</button>
+      </div>
+    </div>
+
+    <canvas id="glitter-canvas"></canvas>
+
+    <script>
+      // === Global progress tracking ===
+      let currentStep = 1;
+      const totalSteps = 8;
+      let furthestStep = 1;
+
+      // Track which badges have been earned
+      let badges = {
+        maze: false,
+        intro: false,
+        shape: false,
+        hole: false,
+        copy: false,
+        ruler: false
+      };
+
+      // === Functions to save/load progress from sessionStorage ===
+      function saveProgress() {
+        const progressData = {
+          currentStep: currentStep,
+          furthestStep: furthestStep,
+          badges: badges
+        };
+        // Store in sessionStorage
+        sessionStorage.setItem("tinkercadProgress", JSON.stringify(progressData));
+      }
+
+      function loadProgress() {
+        const storedData = sessionStorage.getItem("tinkercadProgress");
+        if (storedData) {
+          const parsed = JSON.parse(storedData);
+          currentStep = parsed.currentStep || 1;
+          furthestStep = parsed.furthestStep || 1;
+          badges = parsed.badges || badges;
+        }
+      }
+
+      // Load progress before DOMContentLoaded
+      // loadProgress();
+
+      document.addEventListener("DOMContentLoaded", function() {
+        // Restore badges if previously earned
+        if (badges.maze) {
+          addBadge();
+        }
+        if (badges.intro) {
+          addBadge2();
+        }
+        if (badges.shape) {
+          addBadge3();
+        }
+        if (badges.hole) {
+          addBadge4();
+        }
+        if (badges.copy) {
+          addBadge5();
+        }
+        if (badges.ruler) {
+          addBadge6();
+        }
+
+        // Update progress display
+        updateProgress(currentStep);
+        updateNavButtons();
+
+        // Show the current card (this will load the correct iframe if any)
+        showCard(currentStep);
+      });
+
+      // === Mark Step Complete ===
+      function markComplete(step) {
+        if (step >= furthestStep) {
+          furthestStep = step + 1;
+          document.getElementById("next").disabled = false;
+        }
+        saveProgress();
+        showEmoji(step);
+      }
+
+      // === Navigation ===
+      function nextCard() {
+        if (currentStep < furthestStep && currentStep < totalSteps) {
+          currentStep++;
+          showCard(currentStep);
+          updateProgress(currentStep);
+          updateNavButtons();
+        }
+      }
+
+      function prevCard() {
+        if (currentStep > 1) {
+          currentStep--;
+          showCard(currentStep);
+          updateProgress(currentStep);
+          updateNavButtons();
+        }
+      }
+
+      function showCard(cardNumber) {
+    // Pause all videos
+    pauseAllVideos();
+
+    // Hide all cards
+    for (let i = 1; i <= totalSteps; i++) {
+        const card = document.getElementById("card-" + i);
+        card.classList.remove("active");
+    }
+
+    // Show the requested card
+    const activeCard = document.getElementById("card-" + cardNumber);
+    activeCard.classList.add("active");
+
+    // Unload all iframes first
+    unloadAllIframes();
+    // Then load any iframe(s) in this card
+    loadIframesInCard(cardNumber);
+}
+
+function pauseAllVideos() {
+    const videos = document.querySelectorAll("video");
+    videos.forEach((video) => {
+        video.pause();
+        video.currentTime = 0; // Reset to the beginning (optional)
+    });
+}
+
+
+      // Remove src from all data-src iframes
+      function unloadAllIframes() {
+        const iframes = document.querySelectorAll("iframe[data-src]");
+        iframes.forEach(function(iframe) {
+          iframe.src = "";
+        });
+      }
+
+      // Set src on iframes in the active card
+      function loadIframesInCard(cardNumber) {
+        const card = document.getElementById("card-" + cardNumber);
+        const iframes = card.querySelectorAll("iframe[data-src]");
+        iframes.forEach(function(iframe) {
+          iframe.src = iframe.getAttribute("data-src");
+        });
+      }
+
+      function updateProgress(step) {
+        const progressBar = document.getElementById("progress");
+        const progressText = document.getElementById("progress-text");
+        const percentage = (furthestStep / totalSteps) * 100;
+        progressBar.style.width = percentage + "%";
+        progressText.textContent = step + "/" + totalSteps;
+      }
+
+      function updateNavButtons() {
+        const prevButton = document.getElementById("prev");
+        const nextButton = document.getElementById("next");
+
+        prevButton.style.display = currentStep > 1 ? "inline-block" : "none";
+    
+        // Hide "Next" button on the final card
+        if (currentStep === totalSteps) {
+            nextButton.style.display = "none";
+        } else {
+            nextButton.style.display = "inline-block";
+            nextButton.disabled = currentStep >= furthestStep;
+        }
+      }
+
+
+      // === Emoji Celebration ===
+      const emojis = ["🎉", "🎊", "🥳", "🎈", "👏", "🎉"];
+      function showEmoji(step) {
+        const emojiElement = document.getElementById("emoji");
+        emojiElement.textContent = emojis[(step - 1) % emojis.length];
+        emojiElement.style.opacity = 1;
+        emojiElement.style.transform = "translateX(350px)";
+        setTimeout(function() {
+          emojiElement.style.transform = "translateX(550px)";
+          emojiElement.style.opacity = 0;
+        }, 800);
+      }
+
+      // === Finish Functions (Badge Earners) ===
+      function finishMaze() {
+        alert("Congratulations! You have finished the navigation challenges!");
+        badges.maze = true;
+        addBadge();
+        saveProgress();
+        startGlitter();
+      }
+      function finishIntro() {
+        alert("All ready to go.");
+        badges.intro = true;
+        addBadge2();
+        saveProgress();
+      }
+      function finishShape() {
+        alert("Nice work. You can make rectangular prisms and cylinders!");
+        badges.shape = true;
+        addBadge3();
+        saveProgress();
+        startGlitter();
+      }
+      function finishHole() {
+        alert("Well done. Now you can make holes in shapes.");
+        badges.hole = true;
+        addBadge4();
+        saveProgress();
+        startGlitter();
+      }
+      function finishCopyPasta() {
+        alert("Good job. You can copy and paste shapes.");
+        badges.copy = true;
+        addBadge5();
+        saveProgress();
+        startGlitter();
+      }
+      function finishRuler() {
+        badges.ruler = true;
+        addBadge6();
+        saveProgress();
+      }
+      function finishAll() {
+        alert("You're done with all the training. Great job!");
+        startGlitter();
+        // Redirect to final page after alert is dismissed
+        window.location.href = "complete.html";
+      }
+
+      // === Badge Add Functions ===
+      function addBadge() {
+        const badgeContainer = document.getElementById("badge-container");
+        badgeContainer.innerHTML = `
+          <div class="badge">
+            🏅 <span>A-Mazing Navigator</span>
+          </div>
+        `;
+      }
+      function addBadge2() {
+        const badgeContainer2 = document.getElementById("badge-container2");
+        badgeContainer2.innerHTML = `
+          <div class="badge">
+            🧱 <span>Ready to Block</span>
+          </div>
+        `;
+      }
+      function addBadge3() {
+        const badgeContainer3 = document.getElementById("badge-container3");
+        badgeContainer3.innerHTML = `
+          <div class="badge">
+            🟥🟠🟢 <span>Making shapes</span>
+          </div>
+        `;
+      }
+      function addBadge4() {
+        const badgeContainer4 = document.getElementById("badge-container4");
+        badgeContainer4.innerHTML = `
+          <div class="badge">
+            🧊 <span>Cutting holes</span>
+          </div>
+        `;
+      }
+      function addBadge5() {
+        const badgeContainer5 = document.getElementById("badge-container5");
+        badgeContainer5.innerHTML = `
+          <div class="badge">
+            ✨ <span>Copy and paste</span>
+          </div>
+        `;
+      }
+      function addBadge6() {
+        const badgeContainer6 = document.getElementById("badge-container6");
+        badgeContainer6.innerHTML = `
+          <div class="badge">
+            📏 📐 <span>Getting Square</span>
+          </div>
+        `;
+      }
+
+      // === Glitter Confetti Effect ===
+      function startGlitter() {
+        const canvas = document.getElementById("glitter-canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const numParticles = 200;
+
+        for (let i = 0; i < numParticles; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * -canvas.height,
+            size: Math.random() * 5 + 1,
+            speedY: Math.random() * 3 + 2
+          });
+        }
+
+        function animateGlitter() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach(function(p) {
+            p.y += p.speedY;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(255, 215, 0, 0.8)";
+            ctx.fill();
+          });
+        }
+
+        const interval = setInterval(function() {
+          animateGlitter();
+        }, 20);
+
+        setTimeout(function() {
+          clearInterval(interval);
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
